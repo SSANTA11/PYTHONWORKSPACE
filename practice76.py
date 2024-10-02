@@ -1,0 +1,20 @@
+import turtle
+turtle.shape("turtle")
+action_list=[
+turtle.forward(600),
+turtle.right(144),
+turtle.forward(300),
+turtle.right(144),
+turtle.forward(300),
+turtle.right(144),
+turtle.forward(300),
+turtle.right(144),
+turtle.forward(300),
+turtle.right(288),
+turtle.forward(300),
+turtle.right(144),
+turtle.forward(300),
+turtle.right(144),
+turtle.forward(300),
+turtle.right(144),
+turtle.forward(300)]
