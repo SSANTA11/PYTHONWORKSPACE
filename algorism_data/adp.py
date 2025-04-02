@@ -29,7 +29,6 @@ def pop(e):
     else:
         print("stack underflow")
         exit()
-=======
+# =======
 a=[1,2,3]
 print(a.pop(0))
->>>>>>> 1f5a03ffe42bd552d607619b6c60b65049eec91d
