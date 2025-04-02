@@ -1,21 +1,21 @@
-capacity=10
-array=[None]*capacity
-top=-1
+# capacity=10
+# array=[None]*capacity
+# top=-1
 
-# 스택의 연산: 일반함수
-def isEmpty():
-    if top==-1:
-        return True
-    else:
-        return False
+# # 스택의 연산: 일반함수
+# def isEmpty():
+#     if top==-1:
+#         return True
+#     else:
+#         return False
 
-def isFull():
-    return top==capacity-1
+# def isFull():
+#     return top==capacity-1
 
-def push(e):
-    if not isFull():
-        top+=1
-        array[top]=e
+# def push(e):
+#     if not isFull():
+#         top+=1
+#         array[top]=e
 
 
 
@@ -49,79 +49,79 @@ class ArrayStack:
       pass
 
 
-capacity = 10
-array = [None] * capacity
-top = -1
+# capacity = 10
+# array = [None] * capacity
+# top = -1
 
-def isEmpty():
-    return top == -1
+# def isEmpty():
+#     return top == -1
 
-def isFull():
-    return top == capacity - 1
+# def isFull():
+#     return top == capacity - 1
 
-def push(e):
-    global top
-    if not isFull():
-        top += 1
-        array[top] = e  # Store the element directly
-    else:
-        print("Stack Overflow")
-        exit()
+# def push(e):
+#     global top
+#     if not isFull():
+#         top += 1
+#         array[top] = e  # Store the element directly
+#     else:
+#         print("Stack Overflow")
+#         exit()
 
-def pop():
-    global top
-    if not isEmpty():
-        value = array[top]  # Get the value at the top
-        top -= 1  # Move the top pointer down
-        return value
-    else:
-        print("Stack Underflow")
-        exit()
+# def pop():
+#     global top
+#     if not isEmpty():
+#         value = array[top]  # Get the value at the top
+#         top -= 1  # Move the top pointer down
+#         return value
+#     else:
+#         print("Stack Underflow")
+#         exit()
 
-def peek():
-    if not isEmpty():
-        return array[top]
-    else:
-        return None  # If the stack is empty, return None
+# def peek():
+#     if not isEmpty():
+#         return array[top]
+#     else:
+#         return None  # If the stack is empty, return None
 
-# Input string from the user
-ch = input("입력: ")
-for i in ch:
-    push(i)
+# # Input string from the user
+# ch = input("입력: ")
+# for i in ch:
+#     push(i)
 
-print("문자열 출력: ", end='')
-while not isEmpty():
-    print(pop(), end=' ')
-print()
-
-
-
-s=ArrayStack(100)
-msg=input("문자열 입력:")
-for c in msg:
-  s.push(c)
-
-print("문자열 출력: ", end='')
-while not s.isEmpty():
-  print(s.pop(),end='')
+# print("문자열 출력: ", end='')
+# while not isEmpty():
+#     print(pop(), end=' ')
+# print()
 
 
 
-def checkbrackets(statement):
-  stack=ArrayStack(100)
-  for ch in statement:
-    if ch in ('(','[','{'):
-      stack.push(ch)
-    elif ch in (')',']','}'):
-      if stack.isEmpty():
-        return False
-      else:
-        left=stack.pop()
-        if (ch==')' and left!='(') or (ch==']'and left!='[') or (ch=='}' and left!='{'):
-          return False
+# s=ArrayStack(100)
+# msg=input("문자열 입력:")
+# for c in msg:
+#   s.push(c)
 
-  return stack.isEmpty()
+# print("문자열 출력: ", end='')
+# while not s.isEmpty():
+#   print(s.pop(),end='')
 
 
 
-checkbrackets(input())
+# def checkbrackets(statement):
+#   stack=ArrayStack(100)
+#   for ch in statement:
+#     if ch in ('(','[','{'):
+#       stack.push(ch)
+#     elif ch in (')',']','}'):
+#       if stack.isEmpty():
+#         return False
+#       else:
+#         left=stack.pop()
+#         if (ch==')' and left!='(') or (ch==']'and left!='[') or (ch=='}' and left!='{'):
+#           return False
+
+#   return stack.isEmpty()
+
+
+
+# checkbrackets(input())
