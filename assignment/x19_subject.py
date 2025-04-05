@@ -1,9 +1,9 @@
 print("------"*30)
 
 
-# 초안
+# v0.9
 
-print("# 초안")
+print("# vo.9")
 for i in range(1,9+1):
     for j in range(2,6+1):
         b=("{0:>3}".format(i*j))
@@ -35,8 +35,8 @@ for i in range(1,9+1):
 print("------"*30)
 
 
-# 수정안
-print("# 수정안")
+# v1.0
+print("# v1.0")
 k=0
 for r in range(1,4+1):
     for i in range(1,9+1):

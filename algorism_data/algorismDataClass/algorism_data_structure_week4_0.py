@@ -51,6 +51,9 @@ class ArrayStack:
     else:
       pass
 
+  def __str__(self):
+    return str(self.array[0:self.top+1])
+
 
 # capacity = 10
 # array = [None] * capacity

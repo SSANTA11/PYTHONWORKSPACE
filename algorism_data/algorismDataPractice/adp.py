@@ -9,7 +9,7 @@ def isEmpty():
         return True
     else:
         return False
-    
+
 def isFull():
     return top==cap-1
 
