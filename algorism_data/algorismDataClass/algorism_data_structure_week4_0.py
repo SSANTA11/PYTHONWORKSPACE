@@ -24,8 +24,10 @@ class ArrayStack:
     self.capacity = capacity
     self.array=[None]*self.capacity
     self.top=-1
-  def isEmpty(self)    :
+
+  def isEmpty(self):
     return self.top==-1
+
   def isFull(self):
     return self.top==self.capacity-1
 
@@ -35,6 +37,7 @@ class ArrayStack:
       self.array[self.top]=e
     else:
       pass
+
   def pop(self):
     if not self.isEmpty():
       self.top-=1
