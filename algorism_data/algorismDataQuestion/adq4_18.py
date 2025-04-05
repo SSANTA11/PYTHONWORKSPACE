@@ -1,5 +1,5 @@
 # 코드 4.4: 스택을 이용한 괄호검사 알고리즘 (참고 파일: ch04/CheckBrackets.py)
-from algorism_data_structure_week4_0 import ArrayStack
+from algorismDataClass.algorism_data_structure_week4_0 import ArrayStack
 
 def checkBrackets(statement):
     stack = ArrayStack(100)

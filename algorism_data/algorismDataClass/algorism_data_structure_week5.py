@@ -125,3 +125,21 @@ class CircularQueue:
 
 # 의문:
     # 1. 왜 peek이 스택과 다른가?-> 스택은 pop의 위치를 줄여서 ~~, front위치의 '다음'을 읽어내고 값을 바꾸지 않는다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+do{
+    study
+    }while(1)

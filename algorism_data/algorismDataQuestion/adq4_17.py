@@ -1,5 +1,5 @@
 
-from algorism_data_structure_week4_0 import ArrayStack
+from algorismDataClass.algorism_data_structure_week4_0 import ArrayStack
 st=ArrayStack(100)
 word=input().upper().replace(" ","")
 filtered=""
