@@ -26,7 +26,9 @@ with open(filename,"r") as infile:
 
 
 # 2. 괄호 매칭이 실패하면 조건 1~3 중에서 어떤 조건을 위반했는지를 출력할 수 있도록 소스코드를 수정하라. checkBrackets() 함수가 에러코드를 반환하도록 하면 될 것이다. 에러가 없으면 0을 반환하도록 하라.
-
+    # 조건1: 왼쪽 괄호의 개수와 오른쪽 괄호의 개수가 같아야한다.
+    # 조건2: 같은 타입의 괄호에서 왼쪽 괄호가 오른쪽 괄호보다 먼저 나와야 한다.
+    # 조건3: 서로 다른 타입의 괄호쌍이 서로를 교차해선 안된다.
 def checkBracket_2(statement):
     stack=ArrayStack(100)
     for ch in statement:
@@ -39,7 +41,7 @@ def checkBracket_2(statement):
                 left=stack.pop()
                 if (ch=='}' and left!='{') or (ch==']' and left!='[') or (ch==')' and left!='('):
                     return False
-    return stack.isEmpty()
+    return int(stack.isEmpty())
 
 filename=input()
 with open(filename,"r") as infile:
