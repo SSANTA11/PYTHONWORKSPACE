@@ -54,6 +54,9 @@ class ArrayStack:
   def __str__(self):
     return str(self.array[0:self.top+1])
 
+  def newclear(self):
+   while not self.isEmpty():
+      self.pop()
 
 # capacity = 10
 # array = [None] * capacity

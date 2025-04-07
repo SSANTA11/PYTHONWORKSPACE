@@ -35,6 +35,7 @@ print("""
     조건2: 각 괄호가 왼쪽 괄호, 오른쪽 괄호 순 ---> 어길 시: f2
     조건3: 서로 다른 괄호쌍이 서로를 교차하면 안됨 ---> 어길 시: f3
     """
+
 )
 def checkBracket_2_1(statement):
     stack=ArrayStack(100)
@@ -47,18 +48,23 @@ def checkBracket_2_1(statement):
             else:
                 left=stack.pop()
                 if (ch=='}' and left!='{') or (ch==']' and left!='[') or (ch==')' and left!='('):
-                    return 'f3'                        
+                    return 'f3'
     return 0
-        
+
 filename=input("파일명: ")
 with open(filename,"r") as infile:
     file_content=infile.read()
+    infile.close()
     print("소스파일:", filename,"-->",checkBracket_2_1(file_content))
 
-# 문제점: f1 누락 문제(예를 들어, }{와 같은 경우는 조건1을 만족한다.})
+# 문제점: f1 누락 문제, 중복 조건 누락
+
+
+
+
 
 print('-'*100)
-# 수정본(중복조건 가능)
+# 수정본(중복조건 가능, 파일 전체 검사 가능, 오류 흐름 확인 가능)
 print("Q2-v1.0")
 print("""
     조건1: 왼쪽과 오른쪽의 괄호 개수가 동일 ---> 어길 시: f1
@@ -67,31 +73,83 @@ print("""
     """
 )
 def checkBracket_2_2(statement):
-    error=0
-    stack_l=ArrayStack(100)
-    stack_r=ArrayStack(100)
-    for ch in statement:
-        if ch in "]})":
-            stack_r.push(ch)
-        elif ch in "[{(":
-            error+='f3'
+    stack=ArrayStack(100)
+    l_count=0
+    r_count=0
+    error=ArrayStack(100)
     for ch in statement:
         if ch in "[{(":
-            stack_l.push(ch)
+            l_count+=1
+            stack.push(ch)
         elif ch in "]})":
-            if stack_l.isEmpty():
-                error+='f2'
+            r_count+=1
+            if stack.isEmpty():
+                error.push('f2')
             else:
-                left=stack_l.pop()
+                left=stack.pop()
                 if (ch=='}' and left!='{') or (ch==']' and left!='[') or (ch==')' and left!='('):
-                   error+='f3'
-    return error
-                                      
-        
-        
+                    error.push('f3')
+    if l_count!=r_count:
+        error.push('f1')
+    if error.isEmpty():
+        return 0
+    else:
+        return "발생 에러 코드", error.__str__()
+
 filename=input("파일명: ")
 with open(filename,"r") as infile:
     file_content=infile.read()
+    infile.close()
     print("소스파일:", filename,"-->",checkBracket_2_2(file_content))
 
+print('-'*100)
 # 3. 괄호 매칭이 실패하면 실패한 위치를 에러코드와 함께 반환할 수 있도록 수정하라. 실패한 위치는 (라인수, 문자수)로 나타낼 수 있을 것이다. 따라서 에러가 발생하면 (에러코드, 라인수, 문자수)를 반환하면 될 것이다.
+
+print("Q3")
+print("""
+    조건1: 왼쪽과 오른쪽의 괄호 개수가 동일 ---> 어길 시: f1
+    조건2: 각 괄호가 왼쪽 괄호, 오른쪽 괄호 순 ---> 어길 시: f2
+    조건3: 서로 다른 괄호쌍이 서로를 교차하면 안됨 ---> 어길 시: f3
+    """
+)
+def checkBracket_3(statement):
+    stack=ArrayStack(100)
+    l_count=0
+    r_count=0
+    error=ArrayStack(100)
+    character=ArrayStack(100000)
+    line=1
+    for ch in statement:
+        if ch=="\n":
+            character.newclear()
+            line+=1
+        else:
+            character.push(ch)
+
+        if ch in "[{(":
+            l_count+=1
+            stack.push(ch)
+        elif ch in "]})":
+            r_count+=1
+            if stack.isEmpty():
+                error.push('f2')
+                print(f"{'='*10}\n에러 코드 f2\n\n에러 문자: '{character.peek()}'\n위치 --> 줄 수: {line}, 문자 수: {character.top+1}\n")
+            else:
+                left=stack.pop()
+                if (ch=='}' and left!='{') or (ch==']' and left!='[') or (ch==')' and left!='('):
+                    error.push('f3')
+                    print(f"{'='*10}\n에러 코드f3\n\n에러 문자: '{character.peek()}'\n위치 --> 줄 수: {line}, 문자 수: {character.top+1}\n")
+    if l_count!=r_count:
+        error.push('f1')
+        print("문서 내 f1 에러 존재")
+    if error.isEmpty():
+        return 0
+    else:
+        return "발생 에러 코드", error.__str__()
+
+filename=input("파일명: ")
+
+with open(filename,"r") as infile:
+    file_content=infile.read()
+    infile.close()
+    print("소스파일:", filename,"-->",checkBracket_3(file_content))
