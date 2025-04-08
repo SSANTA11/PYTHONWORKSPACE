@@ -1,7 +1,7 @@
-"""sdadsadas{{{}}}
-     sdsadsadas?}}}
-     sadsad{}{{}}
-     {
-     {
-     {
-"""
+{[}]
+{{{{}}}}
+
+sdksalkdjsald
+asdsadsadas
+asdsadsad
+asdsa{()})))

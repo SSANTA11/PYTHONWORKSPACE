@@ -71,8 +71,8 @@ print("""
     조건2: 각 괄호가 왼쪽 괄호, 오른쪽 괄호 순 ---> 어길 시: f2
     조건3: 서로 다른 괄호쌍이 서로를 교차하면 안됨 ---> 어길 시: f3
     """
-
 )
+
 def checkBracket_2_1(statement):
     stack=ArrayStack(100)
     for ch in statement:
@@ -94,9 +94,9 @@ with open(filename,"r") as infile:
     print("소스파일:", filename,"-->",checkBracket_2_1(file_content))
 
 # 문제점: f1 누락 문제, 중복 조건 누락
-
-
 print('-'*100)
+
+    
 # 수정본(중복조건 가능, 파일 전체 검사 가능, 오류 흐름 확인 가능)
 print("Q2-v1.0")
 print("""
@@ -105,6 +105,7 @@ print("""
     조건3: 서로 다른 괄호쌍이 서로를 교차하면 안됨 ---> 어길 시: f3
     """
 )
+
 def checkBracket_2_2(statement):
     stack=ArrayStack(100)
     l_count=0

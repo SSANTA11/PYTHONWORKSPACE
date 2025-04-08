@@ -1,7 +1,41 @@
-import sys
-sys.path.append("C:/PYTHONWORKSPACE")
-from algorism_data.algorismDataClass.algorism_data_structure_week4_0 import ArrayStack
+class ArrayStack:
+  def __init__(self, capacity):
+    self.capacity = capacity
+    self.array=[None]*self.capacity
+    self.top=-1
 
+  def isEmpty(self):
+    return self.top==-1
+
+  def isFull(self):
+    return self.top==self.capacity-1
+
+  def push(self,e):
+    if not self.isFull():
+      self.top+=1
+      self.array[self.top]=e
+    else:
+      pass
+
+  def pop(self):
+    if not self.isEmpty():
+      self.top-=1
+      return self.array[self.top+1]
+    else:
+      pass
+
+  def peek(self):
+    if not self.isEmpty():
+      return self.array[self.top]
+    else:
+      pass
+
+  def __str__(self):
+    return str(self.array[0:self.top+1])
+
+  def newclear(self):
+   while not self.isEmpty():
+      self.pop()
 
 # 1. 소스 파일을 읽어 괄호를 검사하는 프로그램을 완성하라. 임의의 파이썬 소스 코드(.py)를 입력하면 괄호검사가 되도록 해라
 print("Q1")
