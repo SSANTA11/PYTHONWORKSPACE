@@ -101,26 +101,25 @@ class CircularQueue:
         self.capacity=capacity
         self.arr=[None]*capacity
         self.front=self.rear=0
-
-        def isEmpty(self):
-            return self.front==self.rear
-        def isFull(self):
-            return self.front==(self.rear+1)%self.capacity
-        def enqueue(self, item):
-            if not self.isFull():
-                self.rear=(self.rear+1)%self.capacity
-                self.arr[self.rear]=item
-            else:
-                pass
-        def denqueue(self, item):
-            if not self.isFull():
-                self.front=(self.front+1)%self.capacity
-                self.arr[self.front]=item
-            else:
-                pass
-        def peek(self):
-            if not self.isEmpty():
-                return self.arr(self.front+1)
+    def isEmpty(self):
+        return self.front==self.rear
+    def isFull(self):
+        return self.front==(self.rear+1)%self.capacity
+    def enqueue(self, item):
+        if not self.isFull():
+            self.rear=(self.rear+1)%self.capacity
+            self.arr[self.rear]=item
+        else:
+            pass
+    def dequeue(self):
+        if not self.isEmpty():
+            self.front=(self.front+1)%self.capacity
+            return self.arr[self.front]
+        else:
+            pass
+    def peek(self):
+        if not self.isEmpty():
+            return self.arr[(self.front+1)%self.capacity]
 
 
 # 의문:
