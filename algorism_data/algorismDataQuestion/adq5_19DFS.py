@@ -21,70 +21,70 @@ def isValidPos(x,y):
 # 직접 구현 시...
 # class ArrayStack:
 #     def __init__(self, capacity=100):
-# #         self.stack = [None]*capacity
-# #         self.capacity = capacity
-# #         self.top = -1
+#         self.stack = [None]*capacity
+#         self.capacity = capacity
+#         self.top = -1
 
-# #     def isEmpty(self):
-# #         return self.top == -1
+#     def isEmpty(self):
+#         return self.top == -1
 
-# #     def isFull(self):
-# #         return self.top == self.capacity - 1
+#     def isFull(self):
+#         return self.top == self.capacity - 1
 
-# #     def push(self, item):
-# #         if not self.isFull():
-# #             self.top += 1
-# #             self.stack[self.top] = item
-# #         else:
-# #             print("스택이 가득 찼습니다.")
+#     def push(self, item):
+#         if not self.isFull():
+#             self.top += 1
+#             self.stack[self.top] = item
+#         else:
+#             print("스택이 가득 찼습니다.")
 
-# #     def pop(self):
-# #         if not self.isEmpty():
-# #             item = self.stack[self.top]
-# #             self.top -= 1
-# #             return item
-# #         else:
-# #             print("스택이 비었습니다.")
-# #             return None
+#     def pop(self):
+#         if not self.isEmpty():
+#             item = self.stack[self.top]
+#             self.top -= 1
+#             return item
+#         else:
+#             print("스택이 비었습니다.")
+#             return None
 
-# #     def peek(self):
-# #         if not self.isEmpty():
-# #             return self.stack[self.top]
-# #         else:
-# #             return None
+#     def peek(self):
+#         if not self.isEmpty():
+#             return self.stack[self.top]
+#         else:
+#             return None
 
-# #     def __str__(self):
-# #         return str(self.stack[:self.top + 1])
+#     def __str__(self):
+#         return str(self.stack[:self.top + 1])
 
 
-# # def DFS_1():
-# #     print("DFS: ")
-# #     stack=ArrayStack(100)
-# #     stack.push((0,1))
+# def DFS_1():
+#     print("DFS: ")
+#     stack=ArrayStack(100)
+#     stack.push((0,1))
 
-# #     while not stack.isEmpty():
-# #         here=stack.pop()
-# #         print(here,end='->')
-# #         (x,y)=here
-# #         if (map[y][x]=='x'):
-# #             return True
-# #         else:
-# #             map[y][x]='.'
-# #             if isValidPos(x,y-1):stack.push((x,y-1))
-# #             if isValidPos(x,y+1):stack.push((x,y+1))
-# #             if isValidPos(x-1,y):stack.push((x-1,y))
-# #             if isValidPos(x+1,y):stack.push((x+1,y))
-# #     print("현재 스택: ", stack)
+#     while not stack.isEmpty():
+#         here=stack.pop()
+#         print(here,end='->')
+#         (x,y)=here
+#         if (map[y][x]=='x'):
+#             return True
+#         else:
+#             map[y][x]='.'
+#             if isValidPos(x,y-1):stack.push((x,y-1))
+#             if isValidPos(x,y+1):stack.push((x,y+1))
+#             if isValidPos(x-1,y):stack.push((x-1,y))
+#             if isValidPos(x+1,y):stack.push((x+1,y))
+#     print("현재 스택: ", stack)
 
-# #     return False
-# # result=DFS_1()
+#     return False
+# result=DFS_1()
 
-# # if result:
-# #     print('-->미로탐색성공')
-# # else:
-# #     print('-->미로탐색실패')
+# if result:
+#     print('-->미로탐색성공')
+# else:
+#     print('-->미로탐색실패')
 
-# # # 큐 모듈에서 제공하는 스택 사용 시...
+# # 큐 모듈에서 제공하는 스택 사용 시...
 
 def DFS_2():
     print("DFS: ")
