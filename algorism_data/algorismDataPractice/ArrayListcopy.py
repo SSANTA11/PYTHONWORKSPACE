@@ -1,7 +1,7 @@
-class Arraylist:
-    def __init__(self, capacity):
+class ArrayList:
+    def __init__(self, capacity=100):
         self.capacity=capacity
-        self.array=capacity*[None]
+        self.array=[None]*capacity
         self.size=0
     
     def isEmpty(self):
@@ -16,26 +16,23 @@ class Arraylist:
         else:
             raise IndexError("저런~~ 인덱스 범위를 초과하셨네요")
     def insert(self, pos, e):
-        if not self.isFull() and 0<=pos<self.capacity:
+        if not self.isFull() and 0<=pos<=self.size:
             for i in range(self.size, pos, -1):
                 self.array[i]=self.array[i-1]
             self.array[pos]=e
             self.size+=1
-        else:
-            if self.isFull():
-                 raise IndexError("앗! 리스트오버플로우;;")
-            else:
-                 raise IndexError("이런;; 인덱스 범위를 벗어나셨어요")
     def delete(self,pos):
         if not self.isEmpty() and 0<=pos<self.size:
             for i in range(pos, self.size -1):
                 self.array[i]=self.array[i+1]
             self.array[pos]=None
             self.size-=1
-        else:
-            if self.isEmpty():
-                 raise IndexError("앗! 리스트언더플로우;;")
-            else:
-                 raise IndexError("이런;; 인덱스 범위를 벗어나셨어요")
     def __str__(self):
         return str(self.array[0:self.size])
+
+a=ArrayList()
+a.insert(0, 2)
+a.insert(1, 1)
+a.insert(2, 2)
+
+print(a)
