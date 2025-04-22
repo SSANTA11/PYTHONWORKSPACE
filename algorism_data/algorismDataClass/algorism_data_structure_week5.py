@@ -17,7 +17,7 @@
         # 3. 현재 위치 출구면 끝
         # 4. 스택에는 결국 올바른 경로의 원소들만 들어간다.
         # 5. 잘못된 길이면 후입을 선출하여 인전 위치로 복귀한다.
-from algorism_data_structure_week4_0 import ArrayStack
+# from algorism_data_structure_week4_0 import ArrayStack
 
 
 map=[
@@ -25,9 +25,8 @@ map=[
     ['e','0','0','0','0','1'],
     ['1','0','1','1','0','1'],
     ['1','1','1','1','0','1'],
-    ['1','1','1','1','0','1'],
     ['1','1','1','1','0','x'],
-    ['1','1','1','1','1','1'],
+    ['1','1','1','1','1','1']
     ]
 MAZE_SIZE=len(map)
 def isValidPos(x,y):
@@ -61,6 +60,7 @@ if result:
     print('-->미로탐색성공')
 else:
     print('-->미로탐색실패')
+print(map)
 # 의문:
     # 1. 스택에 아무것도 없다.->길이없다?
     # 2. size사용 이유?
@@ -95,7 +95,34 @@ else:
             # 큐 한개가 추가된다-> 나머지 연산을 고려하여 움직임 없이 추가 배치한다
             # 대신 꽉 차면 안된다
 capacity=100
-
+class ArrayStack:
+    def __init__(self, capacity=10):
+        self.capacity=capacity
+        self.array=[None]*self.capacity
+        self.top=-1
+    def isEmpty(self):
+        return self.top==-1
+    def isFull(self):
+        return self.capacity-1==self.top
+    def push(self, e):
+        if not self.isFull():
+            self.top+=1
+            self.array[self.top]=e
+        else:
+            pass
+    def pop(self):
+        if not self.isEmpty():
+            self.top-=1
+            return self.array[self.top+1]
+        else:
+            pass
+    def peek(self):
+        if not self.isEmpty():
+            return self.array[self.top]
+        else:
+            pass
+    def __str__(self):
+        return str(self.array[0:self.top])
 class CircularQueue:
     def __init__(self, capacity):
         self.capacity=capacity
@@ -124,3 +151,34 @@ class CircularQueue:
 
 # 의문:
     # 1. 왜 peek이 스택과 다른가?-> 스택은 pop의 위치를 줄여서 ~~, front위치의 '다음'을 읽어내고 값을 바꾸지 않는다
+
+# def evalPostFix(expr):
+#     s=ArrayStack()
+#     for token in expr:
+#         if token in "+-*/":
+#             val2=s.pop()
+#             val1=s.pop()
+#         if (token=="+"): s.push(val1+val2)
+#         elif (token=="-"): s.push(val1-val2)
+#         elif (token=="*"): s.push(val1*val2)
+#         elif (token=="/"): s.push(val1/val2)
+#         else:
+#             s.push(float(token))
+#     return s.pop()
+
+expr=["1","+","1","*","100"]
+print(evalPostFix(expr))
+def evalPostFix(expr):
+    s = ArrayStack()
+    for token in expr:
+        if token in "+-*/":
+            val2 = s.pop()
+            val1 = s.pop()
+            if token == "+": s.push(val1 + val2)
+            elif token == "-": s.push(val1 - val2)
+            elif token == "*": s.push(val1 * val2)
+            elif token == "/": s.push(val1 / val2)
+        else:
+            s.push(float(token))
+    return s.pop()
+

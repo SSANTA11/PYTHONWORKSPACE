@@ -14,7 +14,7 @@ class ArrayList:
         if 0<=pos<self.size:
             return self.array[pos]
         else:
-            raise IndexError("Hellnahyourindexisoutofrange")
+                pass
 # --------------------------------------------------------------------------------------------------------------------------------
     def insert(self, pos, e):
         if not self.isFull() and 0<=pos<self.capacity:
@@ -23,10 +23,7 @@ class ArrayList:
             self.array[pos]=e
             self.size+=1
         else:
-            if self.isFull():
-                raise IndexError("ohshityourlistisoverflowing")
-            else: 
-                raise IndexError("WTFyourindexisoutofrange")
+                pass
 # --------------------------------------------------------------------------------------------------------------------------------
     def delete(self,pos):
         if not self.isEmpty() and 0<=pos<self.size:
@@ -36,10 +33,26 @@ class ArrayList:
             self.size-=1
             return e
         else:
-            raise IndexError("Delete operation failed: empty list or invalid index")
+                pass
 # --------------------------------------------------------------------------------------------------------------------------------
     def __str__(self):
         return str(self.array[0:self.size])
-a=ArrayList()
-a.insert(1, 2)
-print(a)
+
+    def findMax(self):
+        maxIndex=0
+        if not self.isEmpty():
+            for i in range(1, self.size):
+                if self.array[maxIndex]<self.array[i]:
+                    maxIndex=i
+            return maxIndex
+        return -1
+    def findMinMax(self):
+        minIndex=0
+        if not self.isEmpty():
+            for i in range(1, self.size):
+                if self.array[minIndex]>self.array[i]:
+                    minIndex=i
+            return minIndex, self.findMax()
+
+
+a=[1,3,5]
