@@ -27,3 +27,34 @@ class CircularQueue:
             pass
     def size(self):
         return (self.rear-self.front+self.capacity)%self.capacity
+    
+    class CircularDeque(CircularQueue):
+        def __init__(self,capacity=10):
+            super().__init__(capacity)
+        def addRear(self, e):
+            return self.enqueue(e)
+        def deleteFront(self):
+            return self.dequeue()
+        def getFront(self):
+            return self.peek()
+        
+        def addFront(self, e):
+            if not self.isFull():
+                self.front=(self.front-1+self.capacity)%self.capacity
+                self.array[self.front]=e
+            else:
+                pass
+        
+        def deleteRear(self):
+            if not self.isEmpty():
+                e=self.array[self.rear]
+                self.rear=(self.rear-1+self.capacity)%self.capacity
+                return e
+            else:
+                pass
+        
+        def getRear(self):
+            if not self.isEmpty():
+                return self.array[self.rear]
+            else:
+                pass

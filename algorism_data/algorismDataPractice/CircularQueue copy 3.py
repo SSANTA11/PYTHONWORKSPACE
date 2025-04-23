@@ -7,21 +7,35 @@ class CircularQueue:
     def isEmpty(self):
         return self.front==self.rear
     def isFull(self):
-        return self.rear==self.front
-    def enqueue(self,item):
+        return self.front==(self.rear+1)%self.capacity
+    def enqueue(self, e):
         if not self.isFull():
             self.rear=(self.rear+1)%self.capacity
-            self.array[self.rear]=item
+            self.array[self.rear]=e
+        else:
+            pass
     def dequeue(self):
         if not self.isEmpty():
+            e=self.array[self.front]
             self.front=(self.front+1)%self.capacity
-        return self.array[self.front]
+            return e
+        else:
+            pass
+
     def peek(self):
         if not self.isEmpty():
-            return self.array[(self.front+1)%self.capacity]
-    def size(self):
-        return (self.rear-self.front+self.capacity)%self.capacity
-    def __str__(self):
-        if self.rear>self.front:
-            return str(self.array[self.front+1:self.rear+1])
-        return str(self.array[self.front+1:self.capacity]+self.array[0:self.rear+1])
+            return self.array[self.front]
+        else:
+            pass
+
+map=[
+    ['1','1','1','1','1','1'],
+    ['e','0','0','0','1','1'],
+    ['1','0','1','0','1','1'],
+    ['1','0','1','0','0','x'],
+    ['1','0','1','1','1','1'],
+    ['1','1','1','1','1','1']
+    ]
+
+
+def 
