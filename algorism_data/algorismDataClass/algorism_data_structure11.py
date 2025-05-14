@@ -46,6 +46,38 @@ def interpolation_search(A, key, low, high) :
 
 # 코드 8.1: 이진트리를 위한 노드 클래스
 
+
+class TNode:
+    def __init__ (self, elem, left, right):
+        self.data = elem
+        self.left = left
+        self.right = right
+
+    def isLeaf(self):
+        return self.left is None and self.right is None
+
+# 코드 8.2: 이진트리의 전위순회
+def preOrder(n) :
+    if n is not None :
+        print(n.data, end=' ')
+        preOrder(n.left)
+        preOrder(n.right)
+
+# 코드 8.3: 이진트리의 중위순회
+def inOrder(n) :
+    if n is not None :
+        inOrder(n.left)
+        print(n.data, end=' ')
+        inOrder(n.right)
+
+# 코드 8.4: 이진트리의 후위순회
+def postOrder(n) :
+    if n is not None :
+        postOrder(n.left)
+        postOrder(n.right)
+        print(n.data, end=' ')
+
+# 코드 8.5: 이진트리의 레벨순회
 # CircularQueue.py
 class CircularQueue :
     def __init__( self, capacity = 8 ) :
@@ -85,6 +117,16 @@ class CircularQueue :
                        self.array[0:self.rear+1] )
 
 
+
+def levelOrder(root) :
+    queue = CircularQueue()
+    queue.enqueue(root)
+    while not queue.isEmpty() :
+        n = queue.dequeue()
+        if n is not None :
+            print(n.data, end=' ')
+            queue.enqueue(n.left)
+            queue.enqueue(n.right)
 #======================================================================
 if __name__ == "__main__":
     q = CircularQueue(8)
@@ -103,48 +145,6 @@ if __name__ == "__main__":
     q.enqueue('H')
     q.enqueue('I')
     print('      G H I 삽입: ', q)
-
-class TNode:
-    def __init__ (self, elem, left, right):
-        self.data = elem
-        self.left = left
-        self.right = right
-
-    def isLeaf(self):
-        return self.left is None and self.right is None
-
-# 코드 8.2: 이진트리의 전위순회
-def preOrder(n) :
-    if n is not None :
-        print(n.data, end=' ')
-        preOrder(n.left)
-        preOrder(n.right)
-
-# 코드 8.3: 이진트리의 중위순회
-def inOrder(n) :
-    if n is not None :
-        inOrder(n.left)
-        print(n.data, end=' ')
-        inOrder(n.right)
-
-# 코드 8.4: 이진트리의 후위순회
-def postOrder(n) :
-    if n is not None :
-        postOrder(n.left)
-        postOrder(n.right)
-        print(n.data, end=' ')
-
-# 코드 8.5: 이진트리의 레벨순회
-
-def levelOrder(root) :
-    queue = CircularQueue()
-    queue.enqueue(root)
-    while not queue.isEmpty() :
-        n = queue.dequeue()
-        if n is not None :
-            print(n.data, end=' ')
-            queue.enqueue(n.left)
-            queue.enqueue(n.right)
 
 # 코드 8.6: 이진트리의 노드 수 계산
 def count_node(n) :
