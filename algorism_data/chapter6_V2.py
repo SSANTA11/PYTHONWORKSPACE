@@ -1,3 +1,4 @@
+# 18번 DNODE 수정 및 최종 완성본
 class DNode:
     def __init__ (self, elem, prev=None, next=None):
         self.data = elem
@@ -34,7 +35,7 @@ class LinkedList:
             if after is not None: #  인덱스 0과 아무것도(after) 없을 때...!
                 after.prev = node
         else :
-            node=DNode(elem, before, None)
+            node=DNode(elem, before, after)
             before.next=node
             if after is not None: # 이번에도 after가 없을 때
                 after.prev=node
@@ -87,4 +88,34 @@ class LinkedList:
         for i in range(BSize):
             self.append2(B.getEntry(0))
             B.delete(0)
+# -------------------------------------------------------------------------------6.19번 미완성---------------------------------------------------------------------------
+class Term:
+    def __init__(self,expo,coef):
+        # (계수, 지수)-->(coef,expo)
+        self.expo=expo
+        self.coef=coef
+class SparsePoly(LinkedList) :
+    def __init__(self):
+        super().__init__()
+    def read(self): # 사용자 입력함수
+        while True:
+            info=input("계수 차수 입력(종료: -1): ")
+            if int(info)==-1:
+                break
+            info=info.split(" ")
+            coef=float(info[0])
+            expo=int(info[1])
+            term=Term(expo,coef)
+            self.append2(term)
 
+    def display(self): # 화면 출력 함수
+        print("입력 다항식:", end=" ")
+        for i in self.printForward():
+            print(f"{list(i)[1]}x^{list(i)[0]} + ")
+
+    def add(self,polyB):
+        print("A = ",end="")
+        self.display()
+        print("B = ", end="")
+        polyB.display()
+        i
