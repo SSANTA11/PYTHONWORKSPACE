@@ -6,6 +6,8 @@ class Node:
         self.data=data
         self.left=left
         self.right=right
+    def __str__(self):
+        return self.data
 
 
 
@@ -113,24 +115,51 @@ def path_length(root):
             total+=depth
             que.enqueue((node.left, depth+1))
             que.enqueue((node.right, depth+1))
-        return total
+    return total
 
 def reverse(root):
     if root is not None:
         root.left, root.right = root.right, root.left
         reverse(root.left)
         reverse(root.right)
+    
 
-root = Node('A',Node('B',Node('D'),Node('E')), Node('C'))
 # 레벨 3 형태 완전이진트리
+root = Node('A',Node('B',Node('D'),Node('E')), Node('C'))
 
 
 print("완전 이진트리 여부 =", isCompleteBinaryTree(root))
 
 print("레벨 순회 결과:")
 level_list = levelOrder(root)
+print("트리 전체 경로 길이 =", path_length(root))
+print("트리 반전 수행")
+for i in levelOrder(root):
+    print(i)
+reverse(root)
+print('뒤집기 후...')
+for i in levelOrder(root):
+    print(i)
+
+
+print('-'*100)
+
+
+# 완전 이진트리가 아닌 경우: 오른쪽 자식만 존재
+root = Node('A', None, Node('B'))
+print("완전 이진트리 여부 =", isCompleteBinaryTree(root))
+
+print("레벨 순회 결과:")
+
+for i in levelOrder(root):
+    print(i)
 
 print("트리 전체 경로 길이 =", path_length(root))
-
 print("트리 반전 수행")
+
+for i in levelOrder(root):
+    print(i)
 reverse(root)
+print('뒤집기 후...')
+for i in levelOrder(root):
+    print(i)
