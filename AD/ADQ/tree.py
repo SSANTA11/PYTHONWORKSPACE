@@ -75,7 +75,12 @@ def isCompleteBinaryTree(n):
 
 # 개선. 트리구조이면 구할 수 있는 특정 노드의 레벨을 구할 수 있는 함수
 def level(root, node):
-    if root is node:
+    if root is None:
         return 1
-    elif root is None:
+    elif root is node:
         return 0
+    elif root is not node:
+        l=level(root.left, node)
+        if l>0:
+            return l+1
+        r=level(root.right, node)
