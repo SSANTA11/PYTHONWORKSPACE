@@ -29,4 +29,3 @@ class LinkedStack:
             count+=1
         return count
 
-class
